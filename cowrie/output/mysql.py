@@ -222,3 +222,13 @@ class Output(cowrie.core.output.Output):
                 'INSERT INTO `keyfingerprints` (`session`, `username`, `fingerprint`) VALUES (%s, %s, %s)',
                 (entry["session"], entry["username"], entry["fingerprint"]))
 
+        elif entry["eventid"] == 'cowrie.direct-tcpip.request':
+            self.simpleQuery(
+                'INSERT INTO `direct_tcpip_request` (`session`, `dst_ip`, `dst_port`, `src_port`, `is_error`, `timestamp`) VALUES (%s, %s, %s, %s, %s, FROM_UNIXTIME(%s))',
+                (entry["session"], entry["dst_ip"], entry["dst_port"], entry["src_port"], entry["isError"], entry["time"]))
+
+        elif entry["eventid"] == 'cowrie.direct-tcpip.data':
+            self.simpleQuery(
+                'INSERT INTO `direct_tcpip_data` (`session`, `dst_ip`, `dst_port`, `data`, `is_error`, `timestamp`) VALUES (%s, %s, %s, %s, %s, FROM_UNIXTIME(%s))',
+                (entry["session"], entry["dst_ip"], entry["dst_port"], entry["data"], entry["isError"], entry["time"])))
+

@@ -77,3 +77,25 @@ CREATE TABLE IF NOT EXISTS `params` (
   PRIMARY KEY  (`id`)
 ) ;
 CREATE INDEX arch_index ON params (arch);
+
+CREATE TABLE IF NOT EXISTS `direct_tcpip_data` (
+  `id` int(11) NOT NULL auto_increment,
+  `session` char(32) NOT NULL,
+  `dst_ip` text NOT NULL,
+  `dst_port` smallint(11) unsigned NOT NULL,
+  `data` text NOT NULL,
+  `is_error` tinyint(11) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+) ;
+
+CREATE TABLE IF NOT EXISTS `direct_tcpip_request` (
+  `id` int(11) NOT NULL auto_increment,
+  `session` char(32) NOT NULL,
+  `dst_ip` text NOT NULL,
+  `dst_port` smallint(11) unsigned NOT NULL,
+  `src_port` smallint(11) unsigned NOT NULL,
+  `is_error` tinyint(11) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+) ;
