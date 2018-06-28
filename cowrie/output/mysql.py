@@ -230,5 +230,5 @@ class Output(cowrie.core.output.Output):
         elif entry["eventid"] == 'cowrie.direct-tcpip.data':
             self.simpleQuery(
                 'INSERT INTO `direct_tcpip_data` (`session`, `dst_ip`, `dst_port`, `data`, `is_error`, `timestamp`) VALUES (%s, %s, %s, %s, %s, FROM_UNIXTIME(%s))',
-                (entry["session"], entry["dst_ip"], entry["dst_port"], entry["data"], entry["isError"], entry["time"])))
+                (entry["session"], entry["dst_ip"], entry["dst_port"], entry["data"], entry["isError"], entry["time"]))
 
